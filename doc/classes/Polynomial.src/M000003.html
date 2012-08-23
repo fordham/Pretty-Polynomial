@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>get_term (Polynomial)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File polynomial.rb, line 60</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_term</span>(<span class="ruby-identifier">coefficient</span>, <span class="ruby-identifier">term_nbr</span>, <span class="ruby-identifier">degree</span>)
+      <span class="ruby-identifier">term</span> = <span class="ruby-value str">''</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">coefficient</span>.<span class="ruby-identifier">abs</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> 
+          <span class="ruby-identifier">term</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">get_sign</span>(<span class="ruby-identifier">coefficient</span>)
+          <span class="ruby-identifier">term</span>.<span class="ruby-identifier">delete!</span>(<span class="ruby-value str">'+'</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">term_nbr</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> 
+      <span class="ruby-keyword kw">else</span>
+          <span class="ruby-identifier">term</span> <span class="ruby-operator">&lt;&lt;</span>  <span class="ruby-identifier">get_sign</span>(<span class="ruby-identifier">coefficient</span>) <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">coefficient</span>.<span class="ruby-identifier">abs</span>.<span class="ruby-identifier">to_s</span>
+          <span class="ruby-identifier">term</span>.<span class="ruby-identifier">delete!</span>(<span class="ruby-value str">'+'</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">term_nbr</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>        
+      <span class="ruby-keyword kw">end</span> 
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">degree</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>                      <span class="ruby-comment cmt"># for x^1 the ^1 part gets omitted</span>
+        <span class="ruby-identifier">term</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">VAR</span>
+      <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">degree</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>                    <span class="ruby-comment cmt"># x^0 == 1, so we don't need to display it</span>
+        <span class="ruby-identifier">term</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{VAR}^#{degree.to_s}&quot;</span>
+      <span class="ruby-keyword kw">end</span>       
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">term</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>
